@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title></title>
+      <link href="/2022/12/27/12.25/"/>
+      <url>/2022/12/27/12.25/</url>
+      
+        <content type="html"><![CDATA[<h1 id="3D-Multi-Object-Tracking-A-Baseline-and-New-Evaluation-Metrics"><a href="#3D-Multi-Object-Tracking-A-Baseline-and-New-Evaluation-Metrics" class="headerlink" title="3D Multi-Object Tracking: A Baseline and New Evaluation Metrics"></a>3D Multi-Object Tracking: A Baseline and New Evaluation Metrics</h1><h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><ul><li><p>第一个依靠点云数据的MOT</p></li><li><p>一个新的3D MOT评价工具</p></li><li><p>SOTA，fastest</p></li></ul><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><img src="12.25/image-20221225104657484.png" alt="System Pipeline" /><h3 id="3D-Object-Detection"><a href="#3D-Object-Detection" class="headerlink" title="3D Object Detection"></a>3D Object Detection</h3><p>对于KITTI和nuScenes数据集分别有不同的方法</p><h4 id="kitti"><a href="#kitti" class="headerlink" title="kitti"></a>kitti</h4><blockquote><p>[6] PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud</p><p>[33] Monocular 3D Object Detection with PseudoLiDAR Point Cloud</p></blockquote><h4 id="nuScenes"><a href="#nuScenes" class="headerlink" title="nuScenes"></a>nuScenes</h4><blockquote><p>Class-Balanced Grouping and Sampling for Point Cloud 3D Object Detection</p></blockquote><p>结果：在第t帧，三维检测模块的输出为一组检测Dt = { D1t，D2t，· · ·，Dntt } ( nt为检测次数)。每个检测Dj t，其中j∈{ 1，2，· · ·，nt }，表示为一个元组( x , y , z , θ , l , w , h , s)，包括物体中心在三维空间的位置( x , y , z)、物体的三维尺寸( l , w , h)、航向角θ和置信度s</p><h1 id="准确率与召回率"><a href="#准确率与召回率" class="headerlink" title="准确率与召回率"></a>准确率与召回率</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p>True Positive(真正，TP)：将正类预测为正类数<br>True Negative(真负，TN)：将负类预测为负类数<br>False Positive(假正，FP)：将负类预测为正类数误报 (Type I error)<br>False Negative(假负，FN)：将正类预测为负类数→漏报 (Type II error)</p><table><thead><tr><th></th><th>Positive</th><th>Negative</th></tr></thead><tbody><tr><td>True</td><td>TP</td><td>TN</td></tr><tr><td>False</td><td>FP</td><td>FN</td></tr></tbody></table><h2 id="准确率（Accuracy）"><a href="#准确率（Accuracy）" class="headerlink" title="准确率（Accuracy）"></a>准确率（Accuracy）</h2><p>$$<br>ACC = \frac{TP+TN}{TP+TN+FP+FN}<br>$$</p><p>准确率是我们最常见的评价指标，而且很容易理解，<strong>就是被分对的样本数除以所有的样本数</strong>，通常来说，正确率越高，分类器越好。 </p><p>但是对于地震的效果不好。</p><h2 id="召回率-Recall"><a href="#召回率-Recall" class="headerlink" title="召回率(Recall)"></a>召回率(Recall)</h2><p>$$<br>Recall = \frac{TP}{TP+FN}<br>$$</p><p>召回率是覆盖面的度量，度量有多个实际的正例被分为正例，衡量了分类器对正例的识别能力。</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>12-16</title>
       <link href="/2022/12/16/12-16/"/>
       <url>/2022/12/16/12-16/</url>
