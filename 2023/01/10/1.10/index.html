@@ -4,13 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="12-16, Tiandoの部屋">
-    <meta name="description" content="
-import tensorflow as torch
-import Pytorch as tf
+    <meta name="keywords" content="MOT笔记2, Tiandoの部屋">
+    <meta name="description" content="阅读文献
+Multiple object tracking: A literature review
 
-$$\sqrt(\sum{abc_c^d})$$
-">
+一篇MOT综述，主要关注于行人，其中分为若干结构：
+
+推导出MOT问题统一的描述方式（derive a unified formulat">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -22,7 +22,7 @@ $$\sqrt(\sum{abc_c^d})$$
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>12-16 | Tiandoの部屋</title>
+    <title>MOT笔记2 | Tiandoの部屋</title>
     <link rel="icon" type="image/png" href="/favicon.png">
     
 
@@ -315,12 +315,12 @@ $$\sqrt(\sum{abc_c^d})$$
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/1.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">12-16</h1>
+                    <h1 class="description center-align post-title">MOT笔记2</h1>
                 </div>
             </div>
         </div>
@@ -342,12 +342,29 @@ $$\sqrt(\sum{abc_c^d})$$
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/MOT/">
+                                <span class="chip bg-color">MOT</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%AF%95%E8%AE%BE/">
+                                <span class="chip bg-color">毕设</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                笔记
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -356,21 +373,21 @@ $$\sqrt(\sum{abc_c^d})$$
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-12-16
+                    2023-01-10
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-12-16
+                    2023-01-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12
+                    233
                 </div>
                 
 
@@ -400,12 +417,23 @@ $$\sqrt(\sum{abc_c^d})$$
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p><img src="image-20221216111333295.png" alt="image-20221216111333295"></p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> torch
-<span class="token keyword">import</span> Pytorch <span class="token keyword">as</span> tf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>$$<br>\sqrt(\sum{abc_c^d})<br>$$</p>
-
+                <h3 id="阅读文献"><a href="#阅读文献" class="headerlink" title="阅读文献"></a>阅读文献</h3><blockquote>
+<p>Multiple object tracking: A literature review</p>
+</blockquote>
+<p>一篇MOT综述，主要关注于行人，其中分为若干结构：</p>
+<ul>
+<li>推导出MOT问题统一的描述方式（derive a unified formulation of the MOT problem）</li>
+<li>一个MOT系统中不同的组成部分</li>
+<li>不同方法的实验结果</li>
+</ul>
+<h4 id="MOT-Problem"><a href="#MOT-Problem" class="headerlink" title="MOT Problem"></a>MOT Problem</h4><p>MOT问题可以看作一个多变量估计问题（multi-variable estimation problem）</p>
+<p>第t帧，第i个物体的状态用$s_t^i$ 来表示</p>
+<p>第t帧，第i个物体的观察用 $o_t^i$ 来表示</p>
+<p>则MOT问题可以看作一个MAP（最大后验问题）问题</p>
+<p>$$<br>\hat{S}<em>{1:t} = {\underset{S</em>{1:t}}{\arg\max} , P(S_{1:t}|O_{1:t})}<br>$$<br>基于概率推理的方法经常把该任务描述为两个迭代：</p>
+<p>Predict：$P(S_{1:t}|O_{1:t}) = \int{P(S_{t}|S_{t-1})P(S_{t-1}|O_{1:t-1})dS_{t-1}}$</p>
+<p>Update：$P(S_{t}|O_{1:t}) \propto {P(O_{t}|S_{t})P(S_{t}|O_{1:t-1})}$</p>
+<h3 id="MLE与MAP"><a href="#MLE与MAP" class="headerlink" title="MLE与MAP"></a>MLE与MAP</h3>
                 
             </div>
             <hr/>
@@ -431,7 +459,7 @@ $$\sqrt(\sum{abc_c^d})$$
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://example.com/2022/12/16/12-16/">http://example.com/2022/12/16/12-16/</a>
+                    <a href="http://example.com/2023/01/10/1.10/">http://example.com/2023/01/10/1.10/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -468,7 +496,15 @@ $$\sqrt(\sum{abc_c^d})$$
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/MOT/">
+                                    <span class="chip bg-color">MOT</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%AF%95%E8%AE%BE/">
+                                    <span class="chip bg-color">毕设</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -516,6 +552,59 @@ $$\sqrt(\sum{abc_c^d})$$
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
+                <a href="/2023/01/13/C++%E7%AC%94%E8%AE%B0/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="C++笔记">
+                        
+                        <span class="card-title">C++笔记</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-01-13
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    笔记
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AF%AD%E6%B3%95/">
+                        <span class="chip bg-color">语法</span>
+                    </a>
+                    
+                    <a href="/tags/C/">
+                        <span class="chip bg-color">C++</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
                 <a href="/2022/12/27/12.25/">
                     <div class="card-image">
                         
@@ -532,9 +621,9 @@ $$\sqrt(\sum{abc_c^d})$$
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-12-27
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -558,43 +647,6 @@ $$\sqrt(\sum{abc_c^d})$$
                         <span class="chip bg-color">毕设</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/10/12/try/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="try">
-                        
-                        <span class="card-title">try</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-12
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            drb
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
@@ -788,7 +840,7 @@ $$\sqrt(\sum{abc_c^d})$$
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
             
-                <span id="year">2022</span>
+                <span id="year">2022-2023</span>
             
             <a href="/about" target="_blank">drb</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>

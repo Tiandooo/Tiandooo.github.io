@@ -4,11 +4,65 @@
   
     
     <entry>
-      <title>MOT笔记1</title>
-      <link href="/2022/12/27/12.25/"/>
-      <url>/2022/12/27/12.25/</url>
+      <title>概率论与数理统计</title>
+      <link href="/2023/01/13/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/"/>
+      <url>/2023/01/13/%E6%A6%82%E7%8E%87%E8%AE%BA%E4%B8%8E%E6%95%B0%E7%90%86%E7%BB%9F%E8%AE%A1/</url>
       
-        <content type="html"><![CDATA[<h2 id="3D-Multi-Object-Tracking-A-Baseline-and-New-Evaluation-Metrics"><a href="#3D-Multi-Object-Tracking-A-Baseline-and-New-Evaluation-Metrics" class="headerlink" title="3D Multi-Object Tracking: A Baseline and New Evaluation Metrics"></a>3D Multi-Object Tracking: A Baseline and New Evaluation Metrics</h2><h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><ul><li><p>第一个依靠点云数据的MOT</p></li><li><p>一个新的3D MOT评价工具</p></li><li><p>SOTA，fastest</p></li></ul><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><img src="image-20221225104657484.png" alt="System Pipeline" /><h3 id="3D-Object-Detection"><a href="#3D-Object-Detection" class="headerlink" title="3D Object Detection"></a>3D Object Detection</h3><p>对于KITTI和nuScenes数据集分别有不同的方法</p><h4 id="kitti"><a href="#kitti" class="headerlink" title="kitti"></a>kitti</h4><blockquote><p>[6] PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud</p><p>[33] Monocular 3D Object Detection with PseudoLiDAR Point Cloud</p></blockquote><h4 id="nuScenes"><a href="#nuScenes" class="headerlink" title="nuScenes"></a>nuScenes</h4><blockquote><p>Class-Balanced Grouping and Sampling for Point Cloud 3D Object Detection</p></blockquote><p>结果：在第t帧，三维检测模块的输出为一组检测Dt = { D1t，D2t，· · ·，Dntt } ( nt为检测次数)。每个检测Dj t，其中j∈{ 1，2，· · ·，nt }，表示为一个元组( x , y , z , θ , l , w , h , s)，包括物体中心在三维空间的位置( x , y , z)、物体的三维尺寸( l , w , h)、航向角θ和置信度s</p><h1 id="准确率与召回率"><a href="#准确率与召回率" class="headerlink" title="准确率与召回率"></a>准确率与召回率</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p>True Positive(真正，TP)：将正类预测为正类数<br>True Negative(真负，TN)：将负类预测为负类数<br>False Positive(假正，FP)：将负类预测为正类数误报 (Type I error)<br>False Negative(假负，FN)：将正类预测为负类数→漏报 (Type II error)</p><table><thead><tr><th></th><th>Positive</th><th>Negative</th></tr></thead><tbody><tr><td>True</td><td>TP</td><td>TN</td></tr><tr><td>False</td><td>FP</td><td>FN</td></tr></tbody></table><h2 id="准确率（Accuracy）"><a href="#准确率（Accuracy）" class="headerlink" title="准确率（Accuracy）"></a>准确率（Accuracy）</h2><p>$$<br>ACC = \frac{TP+TN}{TP+TN+FP+FN}<br>$$</p><p>准确率是我们最常见的评价指标，而且很容易理解，<strong>就是被分对的样本数除以所有的样本数</strong>，通常来说，正确率越高，分类器越好。 </p><p>但是对于地震的效果不好。</p><h2 id="召回率-Recall"><a href="#召回率-Recall" class="headerlink" title="召回率(Recall)"></a>召回率(Recall)</h2><p>$$<br>Recall = \frac{TP}{TP+FN}<br>$$</p><p>召回率是覆盖面的度量，度量有多个实际的正例被分为正例，衡量了分类器对正例的识别能力。</p>]]></content>
+        <content type="html"><![CDATA[<h3 id="最大似然估计（MLE）与最大后验概率-MAP-估计"><a href="#最大似然估计（MLE）与最大后验概率-MAP-估计" class="headerlink" title="最大似然估计（MLE）与最大后验概率(MAP)估计"></a>最大似然估计（MLE）与最大后验概率(MAP)估计</h3><h4 id="参数估计"><a href="#参数估计" class="headerlink" title="参数估计"></a><strong>参数估计</strong></h4><p>根据样本统计量的数值对<strong>总体参数</strong>进行估计的过程</p><p><strong>点估计：</strong>点估计就是用样本统计量的某一具体数值直接推断未知的总体参数</p><p><strong>区间估计：</strong>在推断总体参数时，还要根据统计量的抽样分布特征，估计出总体参数的一个区间。估计小学生的平均身高在1.4~1.5米之间，置信程度为95%，这种估计就属于区间估计。</p><h4 id="概率与统计的区别"><a href="#概率与统计的区别" class="headerlink" title="概率与统计的区别"></a>概率与统计的区别</h4><p>概率（probabilty）、统计（statistics）</p><p><strong>概率：概率研究的问题是，已知一个模型和参数，怎么去预测这个模型产生的结果的特性</strong>（例如均值，方差，协方差等等）。</p><p><strong>统计：</strong>统计研究的问题则相反。<strong>统计是，有一堆数据，要利用这堆数据去预测模型和参数。</strong></p><h4 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h4><p>$$<br>P(A|B) = \frac{P(B|A)P(A)}{P(B)}<br>$$</p><p>贝叶斯公式在描述<strong>你有多大把握能够相信一件证据</strong>。</p><h4 id="概率函数和似然函数的区别"><a href="#概率函数和似然函数的区别" class="headerlink" title="概率函数和似然函数的区别"></a><strong>概率函数和似然函数的区别</strong></h4><p>似然（likelihood）、概率（probability）</p><p><strong>概率函数：</strong>如果 θ 是已知确定的，x是变量，这个函数叫做概率函数(probability function)，它描述对于不同的样本点x，其出现概率是多少。（<strong>相当于机器/深度学习模型的测试过程，此时参数已训练好，是确定的</strong>）</p><p><strong>似然函数：</strong>如果x是已知确定的， θ 是变量，这个函数叫做似然函数(likelihood function), 它描述对于不同的模型参数，出现x这个样本点的概率是多少。（<strong>相当于机器/深度学习模型的训练过程，此时参数还未确定，x是确定的</strong>）</p><p><strong>最大似然估计：</strong>求参数 θ , 使似然函数 P(x|θ) 最大。</p><p><strong>最大后验概率估计：</strong>求参数$ θ$ ,使$P(x|θ)P(θ) $最大. 求得的 $θ$ 不单单让似然函数大，$ θ$自己出现的先验概率$ P(θ) $也得大。 （这有点像正则化里加惩罚项的思想，不过正则化里是利用加法，而MAP里是利用乘法）</p><p><strong>最大后验概率估计就是在已知一系列结果的情况下，求参数可能的最大的那一个，也就是求解下面式子：</strong><br>$$<br>\hat{\theta}_{MAP}(x) = {\underset{\theta}{\arg\max} , P(\theta|x)} = {\underset{\theta}{\arg\max} ,\frac{P(x|\theta) P(\theta)}{P(x)}}<br>$$<br>就是在序列x0 , x1 , … , xn已知的情况下，θ等于某个值的概率，<strong>然后求出θ一个个的取完所有的值的所有概率，选择其中使概率最大的那一个的θ，即为最大后验概率。</strong></p><p>参考文章：<a href="https://zhuanlan.zhihu.com/p/506449599">https://zhuanlan.zhihu.com/p/506449599</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数学 </tag>
+            
+            <tag> 概率论 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>C++笔记</title>
+      <link href="/2023/01/13/C++%E7%AC%94%E8%AE%B0/"/>
+      <url>/2023/01/13/C++%E7%AC%94%E8%AE%B0/</url>
+      
+        <content type="html"><![CDATA[<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><p>一种**复合类型(compound type)**，在变量名前添加“&amp;”符号来定义。</p><p>const引用可以初始化为不同类型的对象或者初始化为右值。const引用为只读。</p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">int i &#x3D; 42;const int &amp;r &#x3D; 42;const int &amp;r2 &#x3D; r + i;&#x2F;&#x2F;不同类型double dval &#x3D; 3.14;const int &amp;r3 &#x3D; dval;&#x2F;&#x2F;可转换为：int temp &#x3D; dval;const int &amp;r3 &#x3D; temp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h5 id="typedef"><a href="#typedef" class="headerlink" title="typedef"></a>typedef</h5><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">typedef double wages;typedef wages salary;wages hourly;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>目的：</p><ul><li>隐藏实现，强调目的</li><li>简化定义类型</li><li>允许一种类型实现多个目的</li></ul><h5 id="enum"><a href="#enum" class="headerlink" title="enum"></a>enum</h5><p>定义：<code>enum open_modes &#123;input, output, append&#125;;</code>    **枚举成员(enumerator)**默认第一个为0，后面递增。枚举成员为常量表达式，不能改变。</p><h5 id="头文件"><a href="#头文件" class="headerlink" title="头文件"></a>头文件</h5><p>头文件用于声明而不是用于定义，声明用<code>extern</code>来表示。定义有三个例外，头文件可以定义类、值在编译时就已经知道的const对象和inline函数。</p><p>设计头文件时，应使其可以多次包含在同一源文件内，保证其中的类不会被多次定义。可以使用<strong>头文件保护符(header guard)</strong></p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">#ifndef SALE#define SALE&#x2F;&#x2F;Definition of SALE#endif<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h5 id="string"><a href="#string" class="headerlink" title="string"></a>string</h5><p>引入：<code>#include&lt;string&gt;</code></p><p>初始化：</p><pre class="line-numbers language-c++" data-language="c++"><code class="language-c++">string s1;  string s2(s1); string s3(&quot;hello&quot;);string s4(n, &#39;c&#39;) &#x2F;&#x2F; n个c<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>读写：cin或getline(cin, s)</p><p>操作：</p><ul><li>s.empty()，返回true or false</li><li>s.size()，返回的是string::size_type，定义为与unsigned型具有相同的含义，不能随意赋值给int</li><li>关系操作符，比较，赋值，相加或连接</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 语法 </tag>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>MOT笔记2</title>
+      <link href="/2023/01/10/1.10/"/>
+      <url>/2023/01/10/1.10/</url>
+      
+        <content type="html"><![CDATA[<h3 id="阅读文献"><a href="#阅读文献" class="headerlink" title="阅读文献"></a>阅读文献</h3><blockquote><p>Multiple object tracking: A literature review</p></blockquote><p>一篇MOT综述，主要关注于行人，其中分为若干结构：</p><ul><li>推导出MOT问题统一的描述方式（derive a unified formulation of the MOT problem）</li><li>一个MOT系统中不同的组成部分</li><li>不同方法的实验结果</li></ul><h4 id="MOT-Problem"><a href="#MOT-Problem" class="headerlink" title="MOT Problem"></a>MOT Problem</h4><p>MOT问题可以看作一个多变量估计问题（multi-variable estimation problem）</p><p>第t帧，第i个物体的状态用$s_t^i$ 来表示</p><p>第t帧，第i个物体的观察用 $o_t^i$ 来表示</p><p>则MOT问题可以看作一个MAP（最大后验问题）问题</p><p>$$<br>\hat{S}<em>{1:t} = {\underset{S</em>{1:t}}{\arg\max} , P(S_{1:t}|O_{1:t})}<br>$$<br>基于概率推理的方法经常把该任务描述为两个迭代：</p><p>Predict：$P(S_{1:t}|O_{1:t}) = \int{P(S_{t}|S_{t-1})P(S_{t-1}|O_{1:t-1})dS_{t-1}}$</p><p>Update：$P(S_{t}|O_{1:t}) \propto {P(O_{t}|S_{t})P(S_{t}|O_{1:t-1})}$</p><h3 id="MLE与MAP"><a href="#MLE与MAP" class="headerlink" title="MLE与MAP"></a>MLE与MAP</h3>]]></content>
       
       
       <categories>
@@ -31,26 +85,27 @@
     
     
     <entry>
-      <title>12-16</title>
-      <link href="/2022/12/16/12-16/"/>
-      <url>/2022/12/16/12-16/</url>
+      <title>MOT笔记1</title>
+      <link href="/2022/12/27/12.25/"/>
+      <url>/2022/12/27/12.25/</url>
       
-        <content type="html"><![CDATA[<p><img src="image-20221216111333295.png" alt="image-20221216111333295"></p><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> tensorflow <span class="token keyword">as</span> torch<span class="token keyword">import</span> Pytorch <span class="token keyword">as</span> tf<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>$$<br>\sqrt(\sum{abc_c^d})<br>$$</p>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>try</title>
-      <link href="/2022/10/12/try/"/>
-      <url>/2022/10/12/try/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to try!</p><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: [Writing](</p>]]></content>
+        <content type="html"><![CDATA[<h2 id="3D-Multi-Object-Tracking-A-Baseline-and-New-Evaluation-Metrics"><a href="#3D-Multi-Object-Tracking-A-Baseline-and-New-Evaluation-Metrics" class="headerlink" title="3D Multi-Object Tracking: A Baseline and New Evaluation Metrics"></a>3D Multi-Object Tracking: A Baseline and New Evaluation Metrics</h2><h2 id="贡献"><a href="#贡献" class="headerlink" title="贡献"></a>贡献</h2><ul><li><p>第一个依靠点云数据的MOT</p></li><li><p>一个新的3D MOT评价工具</p></li><li><p>SOTA，fastest</p></li></ul><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><img src="image-20221225104657484.png" alt="System Pipeline" /><h3 id="3D-Object-Detection"><a href="#3D-Object-Detection" class="headerlink" title="3D Object Detection"></a>3D Object Detection</h3><p>对于KITTI和nuScenes数据集分别有不同的方法</p><h4 id="kitti"><a href="#kitti" class="headerlink" title="kitti"></a>kitti</h4><blockquote><p>[6] PointRCNN: 3D Object Proposal Generation and Detection from Point Cloud</p><p>[33] Monocular 3D Object Detection with PseudoLiDAR Point Cloud</p></blockquote><h4 id="nuScenes"><a href="#nuScenes" class="headerlink" title="nuScenes"></a>nuScenes</h4><blockquote><p>Class-Balanced Grouping and Sampling for Point Cloud 3D Object Detection</p></blockquote><p>结果：在第t帧，三维检测模块的输出为一组检测Dt = { D1t，D2t，· · ·，Dntt } ( nt为检测次数)。每个检测Dj t，其中j∈{ 1，2，· · ·，nt }，表示为一个元组( x , y , z , θ , l , w , h , s)，包括物体中心在三维空间的位置( x , y , z)、物体的三维尺寸( l , w , h)、航向角θ和置信度s</p><h1 id="准确率与召回率"><a href="#准确率与召回率" class="headerlink" title="准确率与召回率"></a>准确率与召回率</h1><h2 id="混淆矩阵"><a href="#混淆矩阵" class="headerlink" title="混淆矩阵"></a>混淆矩阵</h2><p>True Positive(真正，TP)：将正类预测为正类数<br>True Negative(真负，TN)：将负类预测为负类数<br>False Positive(假正，FP)：将负类预测为正类数误报 (Type I error)<br>False Negative(假负，FN)：将正类预测为负类数→漏报 (Type II error)</p><table><thead><tr><th></th><th>Positive</th><th>Negative</th></tr></thead><tbody><tr><td>True</td><td>TP</td><td>TN</td></tr><tr><td>False</td><td>FP</td><td>FN</td></tr></tbody></table><h2 id="准确率（Accuracy）"><a href="#准确率（Accuracy）" class="headerlink" title="准确率（Accuracy）"></a>准确率（Accuracy）</h2><p>$$<br>ACC = \frac{TP+TN}{TP+TN+FP+FN}<br>$$</p><p>准确率是我们最常见的评价指标，而且很容易理解，<strong>就是被分对的样本数除以所有的样本数</strong>，通常来说，正确率越高，分类器越好。 </p><p>但是对于地震的效果不好。</p><h2 id="召回率-Recall"><a href="#召回率-Recall" class="headerlink" title="召回率(Recall)"></a>召回率(Recall)</h2><p>$$<br>Recall = \frac{TP}{TP+FN}<br>$$</p><p>召回率是覆盖面的度量，度量有多个实际的正例被分为正例，衡量了分类器对正例的识别能力。</p>]]></content>
       
       
+      <categories>
+          
+          <category> 笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> MOT </tag>
+            
+            <tag> 毕设 </tag>
+            
+        </tags>
       
     </entry>
     
